@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client" : "npm start --prefix ./client",
+    "dev": "concurrently \" npm run server \" \" npm run client \""
   },
   "author": "",
   "license": "ISC",
