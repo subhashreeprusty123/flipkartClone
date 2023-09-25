@@ -8,7 +8,7 @@ import bodyParser from "body-parser";
 //we are sending data from port 3000 and requesting from 8000 which was not acceptable by browser.. so it shows cors error..
 import cors from 'cors';
 
-const path = require('path');
+// const path = require('path');
 
 //express initialization using constant app
 const app = express();
@@ -24,11 +24,11 @@ app.use('/',router);
 
 
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.get('*',(request,response) => {
-    response.sendFile(path.join(__dirname, '../client/build/index.html'))
-});
+// app.get('*',(request,response) => {
+//     response.sendFile(path.join(__dirname, '../client/build/index.html'))
+// });
 
 const PORT = process.env.PORT || 8000;
 
