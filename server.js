@@ -30,14 +30,22 @@ app.get('*',(request,response) => {
     response.sendFile(path.join(__dirname, '../client/build/index.html'))
 });
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 //extract username and password from .env file
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 
+const URL = process.env.MONGODB_URI || `mongodb://${USERNAME}:${PASSWORD}@ac-f4cbohr-shard-00-00.aionmid.mongodb.net:27017,ac-f4cbohr-shard-00-01.aionmid.mongodb.net:27017,ac-f4cbohr-shard-00-02.aionmid.mongodb.net:27017/FLIPKARTCLONE?ssl=true&replicaSet=atlas-a3bt16-shard-0&authSource=admin&retryWrites=true&w=majority`;
+
+
+
 //calling Connection Function
-Connection( USERNAME , PASSWORD);
+Connection( URL);
+
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static('client/build'))
+// }
 
 //this function make server of express,this takes 2 argument one is port no., 2nd is call back function
 app.listen(PORT,() => { console.log(`Server is running on PORT ${PORT}`)} );
